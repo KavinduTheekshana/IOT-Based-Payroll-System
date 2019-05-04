@@ -22,6 +22,12 @@
                         </div>
                     @endif
 
+                    @if (session('statusupdate'))
+                        <div class="alert alert-primary" role="alert">
+                            {{ session('statusupdate') }}
+                        </div>
+                    @endif
+
                     <table class="table table-striped table-bordered table-list">
                             <thead>
                               <tr>
@@ -44,7 +50,7 @@
                                       <td>{{$row->jobtype}}</td>
                                       <td>{{$row->basicsalary}}/=</td>
                                       <td>
-                                        <a href="#" role="button" class="btn btn-primary"><i class="far fa-edit"></i></a>
+                                        <a href="editprofile/{{$row->systemid}}" role="button" class="btn btn-primary"><i class="far fa-edit"></i></a>
                                         <a href="#" role="button" class="btn btn-success"><i class="fas fa-download"></i></a>
                                         <a href="deleteprofile/{{$row->systemid}}" role="button" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                       </td>

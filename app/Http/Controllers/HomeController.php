@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $profiles =DB::table('profiles')->paginate(4);
+        $profiles =DB::table('profiles')->orderby('id','asc')->paginate(4);
         return view('home',['profiles'=>$profiles]);
     }
 }

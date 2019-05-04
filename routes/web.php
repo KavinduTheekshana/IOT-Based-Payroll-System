@@ -25,4 +25,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/addProfile', 'ProfileController@addProfile');
 
+Route::post('/updateProfile', 'ProfileController@updateProfile');
+
 Route::get('deleteprofile/{id}', 'ProfileController@deleteprofile');
+
+Route::get('editprofile/{id}', 'ProfileController@editprofile');
