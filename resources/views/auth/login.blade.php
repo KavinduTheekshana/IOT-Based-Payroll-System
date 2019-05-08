@@ -30,7 +30,7 @@
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('loginui/images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('loginui/images/bg-03.jpg');">
 			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
                 <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ route('login') }}">
                     @csrf
@@ -47,7 +47,7 @@
 						</span>
 					</div>
 					<div class="wrap-input100 validate-input" data-validate = "Username is required">
-                        <input class="input100" id="email" type="email" @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus >
+                        <input class="input100" id="email" type="email" @error('email') is-invalid @enderror name="email" value="{{ old('email') }}" required autocomplete="email" autofocus >
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

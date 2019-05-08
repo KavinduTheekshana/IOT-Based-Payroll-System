@@ -30,3 +30,7 @@ Route::post('/updateProfile', 'ProfileController@updateProfile');
 Route::get('deleteprofile/{id}', 'ProfileController@deleteprofile');
 
 Route::get('editprofile/{id}', 'ProfileController@editprofile');
+
+Route::get('/excel', 'ProfileController@excel');
+
+Route::get('/attendence', 'AttendenceController@attendence')->name('attendence');

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\View\View;
 use DB;
 use App\profile;
+use Excel;
 
 class ProfileController extends Controller
 {
@@ -87,7 +88,37 @@ class ProfileController extends Controller
         );
         profile::where('id',$id)->update($data);
              
-        //  $profiles->update->where('id',$id);
+
          return redirect('home')->with('statusupdate', 'Profile Update Sucessfully');
       }
+
+
+      public function excel(){
+        $profile = DB::table('profiles')->orderby('id','asc')->get()->toArray();
+
+        $profile_Array[]=array('ID','First Name','Last Name','Email','Address','joined Date','Job Type','Basic Salary');
+
+        foreach($profile as $profiles){
+          $profile_Array[]=array(
+            'ID'=>$profiles->id,
+            'First Name'=>$profiles->firstname,
+            'Last Name'=>$profiles->lastname,
+            'Email'=>$profiles->email,
+            'Address'=>$profiles->address,
+            'joined Date'=>$profiles->joineddate,
+            'Job Type'=>$profiles->jobtype,
+            'Basic Salary'=>$profiles->basicsalary
+          );
+        }
+
+        Excel::create('Profiles', function($excel) use ($profile_Array){
+          $excel->setTitle('Profiles');
+          $excel->sheet('profiles',function($sheet) use ($profile_Array){
+            $sheet->fromArray($profile_Array,null,'A1',false,false);
+          });
+        })->download('xls');
+
+      }
+
+
 }
